@@ -1,0 +1,51 @@
+:root {
+  --primary-color: linear-gradient(180deg, #f2eaed 43.75%, #f6f5e3 79.69%);
+  --secondary-color: black;
+  --tertiary-color: #f2eaed;
+  --stepper-color: rgb(70, 72, 64);
+  --large-font-size: 5rem;
+}
+html {
+  font-size: 10px;
+}
+.nav-color {
+  background: var(--tertiary-color);
+}
+body {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+}
+label {
+  color: var(--secondary-color);
+  font-size: 15px;
+}
+input {
+  border: 1px var(--tertiary-color) solid;
+}
+input:hover {
+  border: 1px solid var(--secondary-color);
+}
+/* input:focus {
+  outline: 0;
+  border: 1px solid var(--secondary-color);
+} */
+
+.large-text {
+  font-size: var(--large-font-size);
+  font-weight: bolder;
+}
+.large-button {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+.center {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+}
+.list-font {
+  font-size: 2rem;
+}
+img {
+  height: 70vh;
+}
