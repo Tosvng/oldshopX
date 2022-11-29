@@ -1,16 +1,7 @@
 import json
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-
-# for automated email
-# from dotenv import load_dotenv
-import os
-import ssl
-import smtplib
-import requests
-from email.message import EmailMessage
-from email.utils import formataddr
-from pathlib import Path
+from .forms import MemberForm
 
 # Create your views here.
 
@@ -40,4 +31,15 @@ def landing_page(request):
 
 def confirmation_page(request):
     if request.method == "GET":
+        return render(request, "server/confirmationPage.html", {})
+
+
+def create(request):
+    if (request.method == "GET"):
+        return render(request, "server/createAccountPage.html", {})
+    elif (request.method == "POST"):
+        form = MemberForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        # DONT FORGET TO CHANGE THIS
         return render(request, "server/confirmationPage.html", {})
