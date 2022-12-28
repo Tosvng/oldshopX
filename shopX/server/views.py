@@ -16,7 +16,7 @@ def landing_page(request):
         # get the email from the form
         email = request.POST['email']
         # use the automated emailer API to send the user an email
-        url = f"https://automated-reply.herokuapp.com/email/{email}"
+        url = f"https://automated-reply.herokuapp.com/email/{email}/Welcome!"
         response = requests.get(url)
 
         # convert the response to a dictionary

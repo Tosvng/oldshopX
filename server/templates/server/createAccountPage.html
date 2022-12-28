@@ -1,56 +1,81 @@
 {% extends "server/base.html" %} {%block title%}Create Account{%endblock%}
 <p></p>
 {%block content%}
+<div class="item-display-area">
+  <div id="display-img" class="selected-img-div carousel slide">
+    {% load static %}
+    <img
+      id="view-panel"
+      src='{% static "media/landingpageimg.jpg" %}'
+      alt="Item"
+    />
+    <div id="selector-panel" class="selector-panel">
+      <div id="collapse-btn"></div>
+
+      <div class="my-flex-row hr-center">
+        <img
+          src='{% static "media/landingpageimg.jpg" %}'
+          onMouseOver="hoverHandler(this)"
+          alt="item1"
+          class="item"
+        />
+        <img
+          src='{% static "media/main1.jpg" %}'
+          onMouseOver="hoverHandler(this)"
+          alt="item1"
+          class="item"
+        />
+        <div data-target="#display-img" data-slide-to="2" class="item"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 mb-2 margin-fit my-flex-row">
+    <p class="content-header">SIZE:</p>
+    <p class="content-header">
+      <span
+        >S<input type="radio" name="options" id="optionS" autocomplete="off" />
+      </span>
+    </p>
+    <p class="content-header">
+      <span
+        >M<input type="radio" name="options" id="optionM" autocomplete="off"
+      /></span>
+    </p>
+    <p class="content-header">
+      <span
+        >L<input type="radio" name="options" id="optionL" autocomplete="off"
+      /></span>
+    </p>
+  </div>
+  <p class="hr-center-text" style="font-size: 20px">OR</p>
+  <div
+    class="my-flex-row hr-center"
+    style="margin-left: auto; margin-right: auto"
+  >
+    <button class="btn btn-outline-dark my-2 my-sm-0 large-button" onclick="#">
+      CUSTOMIZE
+    </button>
+  </div>
+</div>
+
 <div class="form-container container" id="memberForm">
-  <div class="mx-auto">
-    <h2 class="stepper-header">ADDRESS</h2>
-    <div class="mx-5">
-      <form method="POST" action="{%url 'server:create'%}">
-        {% csrf_token %}
-        <div class="form-row">
-          {% comment %}
-          <div class="form-group col-md-6">
-            <label for="firstname">First name</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              id="firstname"
-              placeholder="First name"
-              name="first_name"
-            />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="username">User name</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              id="username"
-              placeholder="User name"
-              name="user_name"
-            />
-          </div>
-          {% endcomment %}
-          <div class="form-group col-md-6">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control form-control-lg"
-              id="email"
-              placeholder="Email"
-              name="email"
-            />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control form-control-lg"
-              id="password"
-              name="pwd"
-              placeholder="Password"
-            />
-          </div>
+  <div class="mx-5">
+    <form
+      method="POST"
+      action="{%url 'server:create'%}"
+      class="form-col"
+      data-multi-step
+    >
+      {% csrf_token %}
+      <div data-step class="card">
+        <div class="">
+          <h6>1/3</h6>
+          <h2 class="stepper-header justify-content-center card-header">
+            ADDRESS
+          </h2>
         </div>
+
         <div class="form-group">
           <label for="address">Address</label>
           <input
@@ -84,13 +109,88 @@
             </select>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">
-          YES! Send me my FREE item
-        </button>
-      </form>
-    </div>
+        <div class="d-flex justify-content-end p-2">
+          <button
+            class="btn btn-lg btn-secondary"
+            style="font-size: 1.7rem"
+            type="button"
+            data-next
+          >
+            Create Password &rarr;
+          </button>
+        </div>
+      </div>
+      {% comment %} USER EMAIL & PASSWORD {% endcomment %}
+      <div data-step class="card">
+        <div>
+          <h6>2/3</h6>
+          <h2 class="stepper-header justify-content-center card-header">
+            User Info
+          </h2>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="email"
+            placeholder="Email"
+            name="email"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            id="password"
+            name="pwd"
+            placeholder="Password"
+          />
+        </div>
+        <div class="d-flex justify-content-between p-2 m-3">
+          <button
+            class="btn btn-lg btn-secondary"
+            style="font-size: 1.7rem"
+            type="button"
+            data-previous
+          >
+            &larr; Edit Address
+          </button>
+          <button
+            class="btn btn-lg btn-secondary"
+            style="font-size: 1.7rem"
+            type="button"
+            data-next
+          >
+            Add payment &rarr;
+          </button>
+        </div>
+      </div>
+      <div data-step class="card">
+        <h6>3/3</h6>
+        <h2 class="stepper-header justify-content-center card-header">
+          Payment
+        </h2>
+        <div class="d-flex justify-content-between p-2">
+          <button
+            class="btn btn-lg btn-info"
+            style="font-size: 1.7rem"
+            type="button"
+            data-previous
+          >
+            &larr; Edit User info
+          </button>
+          <button
+            type="submit"
+            class="btn btn-lg btn-primary"
+            style="font-size: 1.7rem"
+          >
+            YES! Send me my FREE item
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
-
 {%endblock%}

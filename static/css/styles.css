@@ -5,11 +5,9 @@
   --stepper-color: rgb(70, 72, 64);
   --large-font-size: 5rem;
 }
+
 html {
   font-size: 10px;
-}
-.nav-color {
-  background: var(--tertiary-color);
 }
 body {
   background: var(--primary-color);
@@ -29,10 +27,42 @@ input:hover {
   outline: 0;
   border: 1px solid var(--secondary-color);
 } */
+img {
+  height: 70vh;
+}
+.my-flex-row li {
+  list-style-type: none;
+}
+.hr-center {
+  justify-content: center;
+}
+.vr-center {
+  align-items: center;
+}
+.hr-center-text {
+  text-align: center;
+}
+.nav-color {
+  background: var(--tertiary-color);
+}
 
 .large-text {
   font-size: var(--large-font-size);
   font-weight: bolder;
+}
+.content-header {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  /* identical to box height, or 100% */
+
+  text-align: center;
+}
+.content-header span {
+  margin-left: 37px;
+  margin-right: 37px;
 }
 .large-button {
   font-size: 2rem;
@@ -46,6 +76,134 @@ input:hover {
 .list-font {
   font-size: 2rem;
 }
-img {
-  height: 70vh;
+/* source: https://github.com/WebDevSimplified/js-multistep-form/blob/main/styles.css */
+.card {
+  margin: 20px auto;
+  background: linear-gradient(180deg, #f7f5e3 0%, #b7ccd0 100%);
+  box-shadow: 0px 15px 30px #abab9b;
+  border-radius: 20px;
+  /* border: 1px solid #333; */
+  border-radius: 10px;
+  padding: 20px;
+  animation: fade 250ms ease-in-out forwards;
+}
+.card-header {
+  display: flex;
+  text-align: center;
+}
+.card.active {
+  animation: slide 250ms 125ms ease-in-out both;
+}
+.hide {
+  display: none;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+.multi-step-form {
+  overflow: hidden;
+  position: relative;
+}
+/* END OF CARDS */
+
+/* ITEM CUSTOMIZATION */
+.item-display-area {
+  display: block;
+
+  height: 100vh;
+}
+.selected-img-div {
+  position: relative;
+  /* background-color: rgb(158, 158, 158); */
+  height: 60%;
+}
+.selected-img-div img {
+  height: 100%;
+  width: 100%;
+  /* object-fit: contain; */
+}
+.selector-panel {
+  position: absolute;
+  top: 72%;
+  /* left: 0%; */
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+  width: 77.4%;
+  height: 26.2%;
+  background: rgba(217, 217, 217, 0.4);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1.9px);
+  -webkit-backdrop-filter: blur(1.9px);
+  border-radius: 10px;
+
+  transition: all 500ms ease-in-out;
+}
+.collapsed {
+  /* opacity: 0.7; */
+  top: 90%;
+  height: 10px;
+  overflow: hidden;
+  transition: all 500ms ease-in-out;
+}
+.selector-panel .item {
+  background-color: black;
+  /* position: absolute;
+  top: 20%; */
+  /* height: 72%;
+  width: 28%; */
+  height: 87px;
+  width: 85px;
+  margin: 25px 13px;
+  border-radius: 10px;
+  transition: all 250ms ease-in-out;
+}
+.margin-fit {
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+}
+
+#collapse-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  width: 20%;
+  height: 5px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.my-flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* overflow-x: scroll; */
+}
+.my-flex-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }

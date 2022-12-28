@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-import django_heroku
-import dj_database_url
+# import django_heroku
+# import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,9 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8)vc7)@8o(n*-#4i!^)t@60o=$mk4(v0u8wb79$^+jp)m5vzs6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
-ALLOWED_HOSTS = ['shopx-97b.herokuapp.com', 'localhost']
+DEBUG = True
+
+
+ALLOWED_HOSTS = ['shopx-97b.herokuapp.com', 'localhost', "*"]
 
 
 # Application definition
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fontawesomefree',
     'server',
 ]
 
@@ -131,4 +135,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # activate django-heroku
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
